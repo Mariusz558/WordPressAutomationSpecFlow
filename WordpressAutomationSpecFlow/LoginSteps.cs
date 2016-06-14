@@ -1,5 +1,8 @@
 ﻿using System;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using NUnit.Framework;
 
 namespace WordpressAutomationSpecFlow
 {
@@ -9,13 +12,22 @@ namespace WordpressAutomationSpecFlow
         [Given(@"I am on the login page")]
         public void GivenIAmOnTheLoginPage()
         {
-            ScenarioContext.Current.Pending();
+            var title = "Learning Automation Framework Pluralsight › Log In";
+            FirefoxDriver firefox = new FirefoxDriver();
+            firefox.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
+            Assert.AreEqual(firefox.Title, title);
+
         }
         
         [Given(@"I have entered my credentials")]
         public void GivenIHaveEnteredMyCredentials()
         {
-            ScenarioContext.Current.Pending();
+            FirefoxDriver firefox = new FirefoxDriver();
+            //var userNameField = 
+            firefox.FindElementById("user_login").SendKeys("mariusz");
+            //var passwordField = 
+            firefox.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
+            
         }
         
         [Given(@"I have entered unvalid user name")]
@@ -39,13 +51,17 @@ namespace WordpressAutomationSpecFlow
         [When(@"I press Log in button")]
         public void WhenIPressLogInButton()
         {
-            ScenarioContext.Current.Pending();
+            FirefoxDriver firefox = new FirefoxDriver();
+            //var logInButton = 
+            firefox.FindElementById("wp-submit").Click();
         }
         
         [Then(@"I should be able to see my dashboard page")]
         public void ThenIShouldBeAbleToSeeMyDashboardPage()
         {
-            ScenarioContext.Current.Pending();
+            FirefoxDriver firefox = new FirefoxDriver();
+            var welcomePanel = firefox.FindElementById("welcome-panel");
+            Assert.AreEqual(welcomePanel, firefox.FindElementById("welcome-panel"));
         }
         
         [Then(@"I should be able to see an error message ""(.*)""")]
