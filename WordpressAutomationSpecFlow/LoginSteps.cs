@@ -16,6 +16,7 @@ namespace WordpressAutomationSpecFlow
             FirefoxDriver firefox = new FirefoxDriver();
             firefox.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
             Assert.AreEqual(firefox.Title, title);//Assert.AreEqual(title, firefox.Title);
+            //Asert.That(firefox.Title, IsEqualTo(title).IgnoreCase); //nowa forma assercji NUnit>3
 
         }
         
