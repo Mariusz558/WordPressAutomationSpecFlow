@@ -15,7 +15,7 @@ namespace WordpressAutomationSpecFlow
             var title = "Learning Automation Framework Pluralsight › Log In";
             FirefoxDriver firefox = new FirefoxDriver();
             firefox.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
-            Assert.AreEqual(firefox.Title, title);
+            Assert.AreEqual(firefox.Title, title);//Assert.AreEqual(title, firefox.Title);
 
         }
         
