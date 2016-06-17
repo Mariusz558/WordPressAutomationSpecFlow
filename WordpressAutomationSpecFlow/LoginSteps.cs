@@ -19,7 +19,8 @@ namespace WordpressAutomationSpecFlow
             chrome.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
             var title = "Learning Automation Framework Pluralsight › Log In";
-            Assert.AreEqual(chrome.Title, title);
+            Assert.AreEqual(title, chrome.Title);
+            //Assert.That(chrome.Title, IsEqualTo(title).IgnoreCase);
             ScenarioContext.Current.Add("browser", chrome);
 
         }
@@ -29,7 +30,7 @@ namespace WordpressAutomationSpecFlow
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //var userNameField = 
-            chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
             chrome.FindElementById("user_login").SendKeys("mariusz");
             //var passwordField = 
             chrome.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
@@ -58,8 +59,7 @@ namespace WordpressAutomationSpecFlow
         public void WhenIPressLogInButton()
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            //var logInButton = 
-            chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
             chrome.FindElementByXPath("//*[@id='wp-submit']").Click();
         }
         
@@ -67,10 +67,9 @@ namespace WordpressAutomationSpecFlow
         public void ThenIShouldBeAbleToSeeMyDashboardPage()
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            
             var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
-            chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
-            Assert.AreEqual(chrome.Title, titleDashboard);
+            //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            Assert.AreEqual(titleDashboard, chrome.Title);
         }
         
         [Then(@"I should be able to see an error message ""(.*)""")]
