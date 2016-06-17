@@ -1,8 +1,9 @@
 ﻿using System;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
+using OpenQA.Selenium.Support;
 
 namespace WordpressAutomationSpecFlow
 {
@@ -12,21 +13,26 @@ namespace WordpressAutomationSpecFlow
         [Given(@"I am on the login page")]
         public void GivenIAmOnTheLoginPage()
         {
+
+            ChromeDriver chrome = new ChromeDriver();
+            
+            chrome.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
+            //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
             var title = "Learning Automation Framework Pluralsight › Log In";
-            FirefoxDriver firefox = new FirefoxDriver();
-            firefox.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
-            Assert.AreEqual(firefox.Title, title);
+            Assert.AreEqual(chrome.Title, title);
+            ScenarioContext.Current.Add("browser", chrome);
 
         }
         
         [Given(@"I have entered my credentials")]
         public void GivenIHaveEnteredMyCredentials()
         {
-            FirefoxDriver firefox = new FirefoxDriver();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //var userNameField = 
-            firefox.FindElementById("user_login").SendKeys("mariusz");
+            chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            chrome.FindElementById("user_login").SendKeys("mariusz");
             //var passwordField = 
-            firefox.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
+            chrome.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
             
         }
         
@@ -51,17 +57,20 @@ namespace WordpressAutomationSpecFlow
         [When(@"I press Log in button")]
         public void WhenIPressLogInButton()
         {
-            FirefoxDriver firefox = new FirefoxDriver();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //var logInButton = 
-            firefox.FindElementById("wp-submit").Click();
+            chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            chrome.FindElementByXPath("//*[@id='wp-submit']").Click();
         }
         
         [Then(@"I should be able to see my dashboard page")]
         public void ThenIShouldBeAbleToSeeMyDashboardPage()
         {
-            FirefoxDriver firefox = new FirefoxDriver();
-            var welcomePanel = firefox.FindElementById("welcome-panel");
-            Assert.AreEqual(welcomePanel, firefox.FindElementById("welcome-panel"));
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            
+            var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
+            chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            Assert.AreEqual(chrome.Title, titleDashboard);
         }
         
         [Then(@"I should be able to see an error message ""(.*)""")]
