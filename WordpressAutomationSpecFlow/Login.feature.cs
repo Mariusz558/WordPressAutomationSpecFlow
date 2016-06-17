@@ -86,11 +86,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Negative Login - False User Name")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void NegativeLogin_FalseUserName()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative Login - False User Name", new string[] {
-                        "ignore"});
+                        "mytag"});
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
@@ -100,7 +100,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 17
  testRunner.When("I press Log in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
- testRunner.Then("I should be able to see an error message \"Invalid User Name\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be able to see an error message \"ERROR: Invalid username. Lost your pass" +
+                    "word?\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

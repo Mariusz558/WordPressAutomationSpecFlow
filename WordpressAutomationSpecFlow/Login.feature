@@ -10,12 +10,12 @@ Scenario: Positive Login
 	When I press Log in button
 	Then I should be able to see my dashboard page
 
-@ignore
+@mytag
 Scenario: Negative Login - False User Name
 	Given I am on the login page
 	And I have entered unvalid user name
 	When I press Log in button
-	Then I should be able to see an error message "Invalid User Name"
+	Then I should be able to see an error message "ERROR: Invalid username. Lost your password?"
 
 @ignore
 Scenario: Negative Login - False Password

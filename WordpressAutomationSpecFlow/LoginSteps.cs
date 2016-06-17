@@ -40,7 +40,12 @@ namespace WordpressAutomationSpecFlow
         [Given(@"I have entered unvalid user name")]
         public void GivenIHaveEnteredUnvalidUserName()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //var userNameField = 
+            //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            chrome.FindElementById("user_login").SendKeys("invalidusername");
+            //var passwordField = 
+            chrome.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
         }
         
         [Given(@"I have entered invalid password")]
@@ -73,9 +78,12 @@ namespace WordpressAutomationSpecFlow
         }
         
         [Then(@"I should be able to see an error message ""(.*)""")]
-        public void ThenIShouldBeAbleToSeeAnErrorMessage(string p0)
+        public void ThenIShouldBeAbleToSeeAnErrorMessage(string errorMessage)
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //var actualErrorMessage = chrome.FindElement((By.))
+            var actualErrorMessage = chrome.FindElementById("login_error").Text;
+            Assert.AreEqual(errorMessage, actualErrorMessage);
         }
     }
 }
