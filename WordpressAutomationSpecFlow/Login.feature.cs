@@ -100,19 +100,19 @@ this.ScenarioSetup(scenarioInfo);
 #line 17
  testRunner.When("I press Log in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
- testRunner.Then("I should be able to see an error message \"ERROR: Invalid username. Lost your pass" +
-                    "word?\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be able to see an error message \'ERROR: Invalid username. Lost your pass" +
+                    "word?\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Negative Login - False Password")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void NegativeLogin_FalsePassword()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative Login - False Password", new string[] {
-                        "ignore"});
+                        "mytag"});
 #line 21
 this.ScenarioSetup(scenarioInfo);
 #line 22
@@ -122,18 +122,19 @@ this.ScenarioSetup(scenarioInfo);
 #line 24
  testRunner.When("I press Log in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 25
- testRunner.Then("I should be able to see an error message \"Invalid Password\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be able to see an error message \'ERROR: The password you entered for the" +
+                    " username mariusz is incorrect. Lost your password?\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Negative Login - Invalid Credantials")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void NegativeLogin_InvalidCredantials()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative Login - Invalid Credantials", new string[] {
-                        "ignore"});
+                        "mytag"});
 #line 28
 this.ScenarioSetup(scenarioInfo);
 #line 29
@@ -143,7 +144,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 31
  testRunner.When("I press Log in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 32
- testRunner.Then("I should be able to see an error message \"Invalid User Name\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be able to see an error message \'ERROR: Invalid username. Lost your pass" +
+                    "word?\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

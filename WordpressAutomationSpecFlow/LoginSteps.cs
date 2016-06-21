@@ -51,13 +51,17 @@ namespace WordpressAutomationSpecFlow
         [Given(@"I have entered invalid password")]
         public void GivenIHaveEnteredInvalidPassword()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            chrome.FindElementById("user_login").SendKeys("mariusz");
+            chrome.FindElementById("user_pass").SendKeys("invalidpassword");
         }
         
         [Given(@"I have entered invalid credentials")]
         public void GivenIHaveEnteredInvalidCredentials()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            chrome.FindElementById("user_login").SendKeys("invalidusername");
+            chrome.FindElementById("user_pass").SendKeys("invalidpassword");
         }
         
         [When(@"I press Log in button")]
@@ -77,7 +81,7 @@ namespace WordpressAutomationSpecFlow
             Assert.AreEqual(titleDashboard, chrome.Title);
         }
         
-        [Then(@"I should be able to see an error message ""(.*)""")]
+        [Then(@"I should be able to see an error message '(.*)'")]
         public void ThenIShouldBeAbleToSeeAnErrorMessage(string errorMessage)
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
