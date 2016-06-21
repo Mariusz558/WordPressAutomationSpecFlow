@@ -76,7 +76,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.Given("I have logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.And("I am on the new post page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I am on the new post page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
  testRunner.When("I enter my post", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11

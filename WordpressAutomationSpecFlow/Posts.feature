@@ -6,6 +6,6 @@
 @mytag
 Scenario: Add new post
 	Given I have logged in
-	And I am on the new post page
+	Given I am on the new post page
 	When I enter my post
 	Then I should see it on the Posts page
