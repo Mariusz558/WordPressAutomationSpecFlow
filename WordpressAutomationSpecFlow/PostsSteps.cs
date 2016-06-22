@@ -27,22 +27,33 @@ namespace WordpressAutomationSpecFlow
         public void GivenIAmOnTheNewPostPage()
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            chrome.FindElementByName("Posts").Click(); //refactor: hover over
-            chrome.FindElementByName("Add new").Click(); //refactor: find
-            var title = "Add New Post < Learning Automation Framework Pluralsight - WordPress";
+            chrome.Manage().Window.Maximize();
+            //chrome.FindElementByXPath(".//*[@id='menu-posts']/a/div[3]").Click(); //refactor: hover over
+            chrome.FindElementByLinkText("Posts").Click();
+            chrome.FindElementByLinkText("Add New").Click(); //refactor: find
+            var title = "Add New Post ‹ Learning Automation Framework Pluralsight — WordPress";
             Assert.AreEqual(title, chrome.Title);
         }
         
         [When(@"I enter my post")]
         public void WhenIEnterMyPost()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //chrome.SwitchTo().Frame("wpbody-content");
+            //chrome.SwitchTo().Frame(chrome.FindElement(By.Id("wpbody-content")).SendKeys("Test Title"));
+            chrome.FindElement(By.Id("title")).SendKeys("Test Title");
+            //chrome.SwitchTo().DefaultContent();
+            chrome.FindElementById("content_ifr").SendKeys("Test Content");
+            chrome.FindElementById("publish").Click();
         }
         
         [Then(@"I should see it on the Posts page")]
         public void ThenIShouldSeeItOnThePostsPage()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
+            chrome.FindElements(By.TagName("tr"));
+
         }
     }
 }
