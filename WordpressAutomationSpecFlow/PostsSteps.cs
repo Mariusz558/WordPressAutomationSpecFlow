@@ -55,5 +55,30 @@ namespace WordpressAutomationSpecFlow
             //chrome.FindElements(By.TagName("tr"));
 
         }
+
+        [Given(@"I am on the dashboard page")]
+        public void GivenIAmOnTheDashboardPage()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Given(@"There is at least one post created")]
+        public void GivenThereIsAtLeastOnePostCreated()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [When(@"I go to the post page")]
+        public void WhenIGoToThePostPage()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"I should be able to delete selected post")]
+        public void ThenIShouldBeAbleToDeleteSelectedPost()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
     }
 }
