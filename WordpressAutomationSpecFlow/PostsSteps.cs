@@ -52,7 +52,7 @@ namespace WordpressAutomationSpecFlow
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
-            chrome.FindElements(By.TagName("tr"));
+            //chrome.FindElements(By.TagName("tr"));
 
         }
     }
