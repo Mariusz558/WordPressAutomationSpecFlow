@@ -15,14 +15,14 @@ namespace WordpressAutomationSpecFlow
         {
             //ChromeDriver chrome = new ChromeDriver();
             //ScenarioContext.Current.Add("browser", chrome);
-            
+
             Given(string.Format("I am on the login page"));
             Given(string.Format("I have entered my credentials"));
             When(string.Format("I press Log in button"));
             Then(string.Format("I should be able to see my dashboard page"));
 
         }
-        
+
         [Given(@"I am on the new post page")]
         public void GivenIAmOnTheNewPostPage()
         {
@@ -34,7 +34,7 @@ namespace WordpressAutomationSpecFlow
             var title = "Add New Post ‹ Learning Automation Framework Pluralsight — WordPress";
             Assert.AreEqual(title, chrome.Title);
         }
-        
+
         [When(@"I enter my post")]
         public void WhenIEnterMyPost()
         {
@@ -46,13 +46,13 @@ namespace WordpressAutomationSpecFlow
             chrome.FindElementById("content_ifr").SendKeys("Test Content");
             chrome.FindElementById("publish").Click();
         }
-        
+
         [Then(@"I should see it on the Posts page")]
         public void ThenIShouldSeeItOnThePostsPage()
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
-            chrome.FindElements(By.TagName("tr"));
+            //chrome.FindElements(By.TagName("tr"));
 
         }
     }
