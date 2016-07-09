@@ -2,11 +2,15 @@
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using NUnit.Framework;
 using OpenQA.Selenium.Support;
+using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace WordpressAutomationSpecFlow
 {
+    
     [Binding]
     public class PostsSteps : Steps
     {
@@ -26,33 +30,45 @@ namespace WordpressAutomationSpecFlow
         [Given(@"I am on the new post page")]
         public void GivenIAmOnTheNewPostPage()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            chrome.Manage().Window.Maximize();
+            var firefox = ScenarioContext.Current["browser"] as FirefoxDriver;
+            firefox.Manage().Window.Maximize();
             //chrome.FindElementByXPath(".//*[@id='menu-posts']/a/div[3]").Click(); //refactor: hover over
-            chrome.FindElementByLinkText("Posts").Click();
-            chrome.FindElementByLinkText("Add New").Click(); //refactor: find
+            firefox.FindElementByLinkText("Posts").Click();
+            firefox.FindElementByLinkText("Add New").Click(); //refactor: find
             var title = "Add New Post ‹ Learning Automation Framework Pluralsight — WordPress";
-            Assert.AreEqual(title, chrome.Title);
+            Assert.AreEqual(title, firefox.Title);
         }
 
         [When(@"I enter my post")]
         public void WhenIEnterMyPost()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            var firefox = ScenarioContext.Current["browser"] as FirefoxDriver;
             //chrome.SwitchTo().Frame("wpbody-content");
             //chrome.SwitchTo().Frame(chrome.FindElement(By.Id("wpbody-content")).SendKeys("Test Title"));
-            chrome.FindElement(By.Id("title")).SendKeys("Test Title");
-            //chrome.SwitchTo().DefaultContent();
-            chrome.FindElementById("content_ifr").SendKeys("Test Content");
-            chrome.FindElementById("publish").Click();
+            firefox.FindElement(By.Id("title")).SendKeys("Test Title");
+            //firefox.SwitchTo().DefaultContent();
+            Thread.Sleep(3000);
+            //firefox.SwitchTo().Frame("content_ifr");
+            //var contentFrame = firefox.FindElement(By.Id("content_ifr"));
+            //contentFrame.SendKeys("Test Content");
+
+            //firefox.SwitchTo().Frame(firefox.FindElement(By.Id("content_ifr")).SendKeys("Test Content"));
+            firefox.FindElement(By.XPath(".//*[@id='tinymce']/p")).SendKeys("Test Content");
+            //Thread.Sleep(10);
+            //chrome.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            //WebDriverWait publishButtonWait = new WebDriverWait(chrome, TimeSpan.FromSeconds(2));
+            //ChromeWebElement publishButton = publishButtonWait.until(ExpectedConditions.ElementToBeClickable(By.Id("publish")));
+            firefox.FindElement(By.Id("publish")).Click();
+            //chrome.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            //Thread.Sleep(10);
         }
 
         [Then(@"I should see it on the Posts page")]
         public void ThenIShouldSeeItOnThePostsPage()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
-            //chrome.FindElements(By.TagName("tr"));
+            //var firefox = ScenarioContext.Current["browser"] as FirefoxDriver;
+            //firefox.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
+            ////chrome.FindElements(By.TagName("tr"));
 
         }
 
