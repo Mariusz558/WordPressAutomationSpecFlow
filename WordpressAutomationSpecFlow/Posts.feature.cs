@@ -87,11 +87,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Delete a post")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void DeleteAPost()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete a post", new string[] {
-                        "ignore"});
+                        "mytag"});
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15

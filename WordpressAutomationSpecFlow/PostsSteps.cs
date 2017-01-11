@@ -72,7 +72,7 @@ namespace WordpressAutomationSpecFlow
             chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
             IList<IWebElement> postsList = (chrome.FindElements(By.ClassName("row-title")));
             Assert.IsNotEmpty(postsList, "Post does not exist. Fuck you!");
-            if(postsList.Count>0){//jesli jest kilka postow petla for each
+            /*if(postsList.Count>0){//jesli jest kilka postow petla for each
                 //var postToTrash = firefox.FindElements(By.TagName("row-title"))[0];
                 IList<IWebElement> checkBoxes = chrome.FindElements(By.Name("post[]"));
                 var postToTrash = checkBoxes[0];
@@ -82,20 +82,28 @@ namespace WordpressAutomationSpecFlow
                 selectElement.SelectByText("Move to Trash");
                 var applyButton = chrome.FindElement(By.Id("doaction"));
                 applyButton.Click();
-            }
+            }*/
 
         }
 
         [Given(@"I am on the dashboard page")]
         public void GivenIAmOnTheDashboardPage()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
+            //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+            Assert.AreEqual(titleDashboard, chrome.Title);
         }
 
         [Given(@"There is at least one post created")]
         public void GivenThereIsAtLeastOnePostCreated()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click(); nie dziala
+            chrome.FindElementByLinkText("Posts").Click();
+
+            IList<IWebElement> postsList = (chrome.FindElements(By.ClassName("row-title")));
+            Assert.IsNotEmpty(postsList, "Post does not exist. Fuck you!");
         }
 
         [When(@"I go to the post page")]

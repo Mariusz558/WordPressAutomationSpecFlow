@@ -10,7 +10,7 @@ Scenario: Add new post
 	When I enter my post
 	Then I should see it on the Posts page
 
-@ignore
+@mytag
 Scenario: Delete a post
 	Given I have logged in
 	Given I am on the dashboard page
