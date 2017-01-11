@@ -31,25 +31,25 @@ namespace WordpressAutomationSpecFlow
         [Given(@"I am on the new post page")]
         public void GivenIAmOnTheNewPostPage()
         {
-            var firefox = ScenarioContext.Current["browser"] as FirefoxDriver;
-            firefox.Manage().Window.Maximize();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            chrome.Manage().Window.Maximize();
             //chrome.FindElementByXPath(".//*[@id='menu-posts']/a/div[3]").Click(); //refactor: hover over
-            firefox.FindElementByLinkText("Posts").Click();
-            firefox.FindElementByLinkText("Add New").Click(); //refactor: find
+            chrome.FindElementByLinkText("Posts").Click();
+            chrome.FindElementByLinkText("Add New").Click(); //refactor: find
             var title = "Add New Post ‹ Learning Automation Framework Pluralsight — WordPress";
-            Assert.AreEqual(title, firefox.Title);
+            Assert.AreEqual(title, chrome.Title);
         }
 
         [When(@"I enter my post")]
         public void WhenIEnterMyPost()
         {
-            var firefox = ScenarioContext.Current["browser"] as FirefoxDriver;
-            firefox.FindElement(By.Id("title")).SendKeys("Test Title");
-            firefox.SwitchTo().Frame("content_ifr");
-            firefox.SwitchTo().ActiveElement().SendKeys("Test Content");
-            firefox.SwitchTo().DefaultContent();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            chrome.FindElement(By.Id("title")).SendKeys("Test Title");
+            chrome.SwitchTo().Frame("content_ifr");
+            chrome.SwitchTo().ActiveElement().SendKeys("Test Content");
+            chrome.SwitchTo().DefaultContent();
             Thread.Sleep(3000);
-            firefox.FindElement(By.Id("publish")).Click();
+            chrome.FindElement(By.Id("publish")).Click();
 
             //var contentFrame = firefox.FindElement(By.Id("content_ifr"));
             //contentFrame.SendKeys("Test Content");
@@ -68,19 +68,19 @@ namespace WordpressAutomationSpecFlow
         {
             //bool postsListNotEmpty = Assert.IsNotEmpty(postsList);
 
-            var firefox = ScenarioContext.Current["browser"] as FirefoxDriver;
-            firefox.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
-            IList<IWebElement> postsList = (firefox.FindElements(By.ClassName("row-title")));
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
+            IList<IWebElement> postsList = (chrome.FindElements(By.ClassName("row-title")));
             Assert.IsNotEmpty(postsList, "Post does not exist. Fuck you!");
             if(postsList.Count>0){//jesli jest kilka postow petla for each
                 //var postToTrash = firefox.FindElements(By.TagName("row-title"))[0];
-                IList<IWebElement> checkBoxes = firefox.FindElements(By.Name("post[]"));
+                IList<IWebElement> checkBoxes = chrome.FindElements(By.Name("post[]"));
                 var postToTrash = checkBoxes[0];
                 postToTrash.Click();
-                var actionsMenu = firefox.FindElement(By.Id("bulk-action-selector-top"));
+                var actionsMenu = chrome.FindElement(By.Id("bulk-action-selector-top"));
                 var selectElement = new SelectElement(actionsMenu);
                 selectElement.SelectByText("Move to Trash");
-                var applyButton = firefox.FindElement(By.Id("doaction"));
+                var applyButton = chrome.FindElement(By.Id("doaction"));
                 applyButton.Click();
             }
 
