@@ -97,12 +97,10 @@ this.ScenarioSetup(scenarioInfo);
 #line 15
  testRunner.Given("I have logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
- testRunner.Given("I am on the dashboard page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 17
  testRunner.Given("There is at least one post created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 17
+ testRunner.When("I am on the posts page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
- testRunner.When("I go to the post page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 19
  testRunner.Then("I should be able to delete selected post", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

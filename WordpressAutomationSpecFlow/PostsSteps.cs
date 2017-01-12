@@ -98,25 +98,52 @@ namespace WordpressAutomationSpecFlow
         [Given(@"There is at least one post created")]
         public void GivenThereIsAtLeastOnePostCreated()
         {
+            // go to the post page
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click(); nie dziala
             chrome.FindElementByLinkText("Posts").Click();
 
+            // check amount of posts on the posts page
             IList<IWebElement> postsList = (chrome.FindElements(By.ClassName("row-title")));
             Assert.IsNotEmpty(postsList, "Post does not exist. Fuck you!");
         }
 
-        [When(@"I go to the post page")]
+        [When(@"I am on the posts page")]
         public void WhenIGoToThePostPage()
         {
-            ScenarioContext.Current.Pending();
+            // go to the post page
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click(); nie dziala
+            chrome.FindElementByLinkText("Posts").Click();
         }
 
         [Then(@"I should be able to delete selected post")]
         public void ThenIShouldBeAbleToDeleteSelectedPost()
         {
-            ScenarioContext.Current.Pending();
+            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+
+            //check posts
+            IList<IWebElement> checkBoxes = chrome.FindElements(By.Name("post[]"));
+            for (int i = 0; i < checkBoxes.Count; i++)
+            {
+                var postToTrash = checkBoxes[i];
+                postToTrash.Click();
+            }
+            //var postToTrash = checkBoxes[0];
+            //postToTrash.Click();
+
+            //Thread.Sleep(9000);
+
+            // trash checked posts
+            var actionsMenu = chrome.FindElement(By.Id("bulk-action-selector-top"));
+            var selectElement = new SelectElement(actionsMenu);
+            selectElement.SelectByText("Move to Trash");
+            var applyButton = chrome.FindElement(By.Id("doaction"));
+            applyButton.Click();
+        }
+
+
         }
 
     }
-}
+

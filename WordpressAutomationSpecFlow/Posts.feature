@@ -13,7 +13,6 @@ Scenario: Add new post
 @mytag
 Scenario: Delete a post
 	Given I have logged in
-	Given I am on the dashboard page
 	Given There is at least one post created
-	When I go to the post page
+	When I am on the posts page
 	Then I should be able to delete selected post
