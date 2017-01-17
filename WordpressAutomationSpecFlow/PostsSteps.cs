@@ -8,6 +8,7 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using System.Threading;
 using System.Collections.Generic;
+using OpenQA.Selenium.Interactions;
 
 namespace WordpressAutomationSpecFlow
 {
@@ -33,9 +34,25 @@ namespace WordpressAutomationSpecFlow
         {
             var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             chrome.Manage().Window.Maximize();
-            //chrome.FindElementByXPath(".//*[@id='menu-posts']/a/div[3]").Click(); //refactor: hover over
+            chrome.FindElementByXPath(".//*[@id='menu-posts']/a/div[3]").Click(); //refactor: hover over
             chrome.FindElementByLinkText("Posts").Click();
             chrome.FindElementByLinkText("Add New").Click(); //refactor: find
+            
+            /*// hover over menu
+                // get Posts menu item
+
+            Actions action = new Actions(chrome);
+            IWebElement postsMenuItem = chrome.FindElementById("menu-posts");
+
+            action.MoveToElement(postsMenuItem).Click().Build().Perform();
+
+            //WebDriverWait wait = new WebDriverWait(chrome, TimeSpan.FromSeconds(5));
+            //wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.LinkText("Add New")));
+
+            IWebElement addNewMenuItem = chrome.FindElementByLinkText("Add New");
+            action.MoveToElement(addNewMenuItem).Click().Build().Perform(); ;*/
+
+            // verify wehter landed on the correct page
             var title = "Add New Post ‹ Learning Automation Framework Pluralsight — WordPress";
             Assert.AreEqual(title, chrome.Title);
         }
