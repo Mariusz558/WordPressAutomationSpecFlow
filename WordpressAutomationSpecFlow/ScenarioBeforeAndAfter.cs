@@ -3,10 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechTalk.SpecFlow;
+using OpenQA.Selenium.Chrome;
 
 namespace WordpressAutomationSpecFlow
 {
-    class ScenarioBeforeAndAfter
+    [Binding]
+   class ScenarioBeforeAndAfter
     {
+        [BeforeScenario]
+        public static void BeforeScenario()
+        {
+
+        }
+
+        [AfterScenario]
+        public static void AfterScenario()
+        {
+            //chrome.Close();
+        }
     }
 }

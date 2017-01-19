@@ -83,6 +83,7 @@ namespace WordpressAutomationSpecFlow
             var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
             Assert.AreEqual(titleDashboard, chrome.Title);
+            chrome.Close();
         }
         
         [Then(@"I should be able to see an error message '(.*)'")]
@@ -92,6 +93,7 @@ namespace WordpressAutomationSpecFlow
             //var actualErrorMessage = chrome.FindElement((By.))
             var actualErrorMessage = chrome.FindElementById("login_error").Text;
             Assert.AreEqual(errorMessage, actualErrorMessage);
+            chrome.Close();
         }
     }
 }
