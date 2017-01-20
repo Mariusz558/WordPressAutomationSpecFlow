@@ -17,10 +17,10 @@ namespace WordpressAutomationSpecFlow
 
         }
 
-        [AfterScenario]
+        [AfterScenario("closeAfter")]
         public static void AfterScenario()
         {
-            //chrome.Close();
+            WebBrowser.CurrentChromeWindow.Close();
         }
     }
 }

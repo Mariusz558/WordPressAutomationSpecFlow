@@ -16,84 +16,84 @@ namespace WordpressAutomationSpecFlow
         public void GivenIAmOnTheLoginPage()
         {
 
-            ChromeDriver chrome = new ChromeDriver();
+            //ChromeDriver chrome = new ChromeDriver();
             //FirefoxDriver firefox = new FirefoxDriver();
             //InternetExplorerDriver ie = new InternetExplorerDriver();
 
-            chrome.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
+            //chrome.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
+
+            WebBrowser.CurrentChromeWindow.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
             var title = "Learning Automation Framework Pluralsight › Log In";
-            Assert.AreEqual(title, chrome.Title);
+            Assert.AreEqual(title, WebBrowser.CurrentChromeWindow.Title);
             //Assert.That(chrome.Title, IsEqualTo(title).IgnoreCase);
-            ScenarioContext.Current.Add("browser", chrome);
+            //ScenarioContext.Current.Add("browser", chrome);
 
         }
         
         [Given(@"I have entered my credentials")]
         public void GivenIHaveEnteredMyCredentials()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //var userNameField = 
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
-            chrome.FindElementById("user_login").SendKeys("mariusz");
+            WebBrowser.CurrentChromeWindow.FindElementById("user_login").SendKeys("mariusz");
             //var passwordField = 
-            chrome.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
+            WebBrowser.CurrentChromeWindow.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
             
         }
         
         [Given(@"I have entered unvalid user name")]
         public void GivenIHaveEnteredUnvalidUserName()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //var userNameField = 
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
-            chrome.FindElementById("user_login").SendKeys("invalidusername");
+            WebBrowser.CurrentChromeWindow.FindElementById("user_login").SendKeys("invalidusername");
             //var passwordField = 
-            chrome.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
+            WebBrowser.CurrentChromeWindow.FindElementById("user_pass").SendKeys("dkz10L02VhgmklfRE@");
         }
         
         [Given(@"I have entered invalid password")]
         public void GivenIHaveEnteredInvalidPassword()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            chrome.FindElementById("user_login").SendKeys("mariusz");
-            chrome.FindElementById("user_pass").SendKeys("invalidpassword");
+            //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            WebBrowser.CurrentChromeWindow.FindElementById("user_login").SendKeys("mariusz");
+            WebBrowser.CurrentChromeWindow.FindElementById("user_pass").SendKeys("invalidpassword");
         }
         
         [Given(@"I have entered invalid credentials")]
         public void GivenIHaveEnteredInvalidCredentials()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            chrome.FindElementById("user_login").SendKeys("invalidusername");
-            chrome.FindElementById("user_pass").SendKeys("invalidpassword");
+            //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            WebBrowser.CurrentChromeWindow.FindElementById("user_login").SendKeys("invalidusername");
+            WebBrowser.CurrentChromeWindow.FindElementById("user_pass").SendKeys("invalidpassword");
         }
         
         [When(@"I press Log in button")]
         public void WhenIPressLogInButton()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
-            chrome.FindElementByXPath("//*[@id='wp-submit']").Click();
+            WebBrowser.CurrentChromeWindow.FindElementByXPath("//*[@id='wp-submit']").Click();
         }
         
         [Then(@"I should be able to see my dashboard page")]
         public void ThenIShouldBeAbleToSeeMyDashboardPage()
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
-            Assert.AreEqual(titleDashboard, chrome.Title);
-            chrome.Close();
+            Assert.AreEqual(titleDashboard, WebBrowser.CurrentChromeWindow.Title);
         }
         
         [Then(@"I should be able to see an error message '(.*)'")]
         public void ThenIShouldBeAbleToSeeAnErrorMessage(string errorMessage)
         {
-            var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
+            //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //var actualErrorMessage = chrome.FindElement((By.))
-            var actualErrorMessage = chrome.FindElementById("login_error").Text;
+            var actualErrorMessage = WebBrowser.CurrentChromeWindow.FindElementById("login_error").Text;
             Assert.AreEqual(errorMessage, actualErrorMessage);
-            chrome.Close();
         }
     }
 }

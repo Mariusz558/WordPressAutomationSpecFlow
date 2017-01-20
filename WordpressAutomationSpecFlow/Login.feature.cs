@@ -87,10 +87,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Negative Login - False User Name")]
         [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("closeAfter")]
         public virtual void NegativeLogin_FalseUserName()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative Login - False User Name", new string[] {
-                        "mytag"});
+                        "mytag",
+                        "closeAfter"});
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
@@ -109,10 +111,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Negative Login - False Password")]
         [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("closeAfter")]
         public virtual void NegativeLogin_FalsePassword()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative Login - False Password", new string[] {
-                        "mytag"});
+                        "mytag",
+                        "closeAfter"});
 #line 21
 this.ScenarioSetup(scenarioInfo);
 #line 22
@@ -131,10 +135,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Negative Login - Invalid Credantials")]
         [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("closeAfter")]
         public virtual void NegativeLogin_InvalidCredantials()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative Login - Invalid Credantials", new string[] {
-                        "mytag"});
+                        "mytag",
+                        "closeAfter"});
 #line 28
 this.ScenarioSetup(scenarioInfo);
 #line 29

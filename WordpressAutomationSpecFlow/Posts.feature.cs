@@ -67,10 +67,12 @@ namespace WordpressAutomationSpecFlow
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add new post")]
         [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("closeAfter")]
         public virtual void AddNewPost()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new post", new string[] {
-                        "mytag"});
+                        "mytag",
+                        "closeAfter"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -88,10 +90,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Delete a post")]
         [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("closeAfter")]
         public virtual void DeleteAPost()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete a post", new string[] {
-                        "mytag"});
+                        "mytag",
+                        "closeAfter"});
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15

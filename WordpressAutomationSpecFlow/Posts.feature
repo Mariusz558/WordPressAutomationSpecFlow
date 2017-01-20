@@ -3,14 +3,14 @@
 	As a bloger
 	I want to be able to add and remove posts.
 
-@mytag
+@mytag @closeAfter
 Scenario: Add new post
 	Given I have logged in
 	Given I am on the new post page
 	When I enter my post
 	Then I should see it on the Posts page
 
-@mytag
+@mytag @closeAfter
 Scenario: Delete a post
 	Given I have logged in
 	Given There is at least one post created
