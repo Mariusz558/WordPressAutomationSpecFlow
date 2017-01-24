@@ -9,7 +9,7 @@ using OpenQA.Selenium.Chrome;
 namespace WordpressAutomationSpecFlow
 {
     [Binding]
-   class ScenarioBeforeAndAfter
+   internal class ScenarioBeforeAndAfter
     {
         [BeforeScenario]
         public static void BeforeScenario()
@@ -17,7 +17,7 @@ namespace WordpressAutomationSpecFlow
 
         }
 
-        [AfterScenario("closeAfter")]
+        [AfterScenario]
         public static void AfterScenario()
         {
             WebBrowser.CurrentChromeWindow.Close();

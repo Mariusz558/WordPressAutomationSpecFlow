@@ -26,7 +26,6 @@ namespace WordpressAutomationSpecFlow
             Given(string.Format("I have entered my credentials"));
             When(string.Format("I press Log in button"));
             Then(string.Format("I should be able to see my dashboard page"));
-
         }
 
         [Given(@"I am on the new post page")]
@@ -100,7 +99,6 @@ namespace WordpressAutomationSpecFlow
                 var applyButton = chrome.FindElement(By.Id("doaction"));
                 applyButton.Click();
             }*/
-
         }
 
         [Given(@"I am on the dashboard page")]
@@ -132,7 +130,11 @@ namespace WordpressAutomationSpecFlow
             // go to the post page
             //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click(); nie dziala
+
+            var title = "Posts ‹ Learning Automation Framework Pluralsight — WordPress";
             WebBrowser.CurrentChromeWindow.FindElementByLinkText("Posts").Click();
+
+            Assert.AreEqual(title, WebBrowser.CurrentChromeWindow.Title);
         }
 
         [Then(@"I should be able to delete selected post")]

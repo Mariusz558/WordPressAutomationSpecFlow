@@ -15,7 +15,6 @@ namespace WordpressAutomationSpecFlow
         [Given(@"I am on the login page")]
         public void GivenIAmOnTheLoginPage()
         {
-
             //ChromeDriver chrome = new ChromeDriver();
             //FirefoxDriver firefox = new FirefoxDriver();
             //InternetExplorerDriver ie = new InternetExplorerDriver();
