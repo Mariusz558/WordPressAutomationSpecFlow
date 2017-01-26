@@ -27,7 +27,6 @@ namespace WordpressAutomationSpecFlow
             Assert.AreEqual(title, WebBrowser.CurrentChromeWindow.Title);
             //Assert.That(chrome.Title, IsEqualTo(title).IgnoreCase);
             //ScenarioContext.Current.Add("browser", chrome);
-
         }
         
         [Given(@"I have entered my credentials")]

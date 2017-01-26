@@ -68,30 +68,34 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Login.feature.cs">
+    <Compile Include="Features\Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.feature</DependentUpon>
     </Compile>
-    <Compile Include="LoginSteps.cs" />
-    <Compile Include="Posts.feature.cs">
+    <Compile Include="Pages\AllPostsPage.cs" />
+    <Compile Include="Pages\DashboardPage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\NewPostPage.cs" />
+    <Compile Include="Scenarios\LoginSteps.cs" />
+    <Compile Include="Features\Posts.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Posts.feature</DependentUpon>
     </Compile>
-    <Compile Include="PostsSteps.cs" />
+    <Compile Include="Scenarios\PostsSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioBeforeAndAfter.cs" />
-    <Compile Include="WebBrowser.cs" />
+    <Compile Include="Utilities\ScenarioBeforeAndAfter.cs" />
+    <Compile Include="Utilities\WebBrowser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Login.feature">
+    <None Include="Features\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Login.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Posts.feature">
+    <None Include="Features\Posts.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Posts.feature.cs</LastGenOutput>
     </None>

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace WordpressAutomationSpecFlow
+namespace WordpressAutomationSpecFlow.Features
 {
     using TechTalk.SpecFlow;
     
