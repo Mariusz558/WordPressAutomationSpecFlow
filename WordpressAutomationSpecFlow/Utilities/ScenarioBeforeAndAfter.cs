@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Chrome;
+using WordpressAutomationSpecFlow;
 
 namespace WordpressAutomationSpecFlow
 {
@@ -14,7 +15,7 @@ namespace WordpressAutomationSpecFlow
         [BeforeScenario]
         public static void BeforeScenario()
         {
-
+            WebBrowser.CurrentChromeWindow.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
         }
 
         [AfterScenario]
