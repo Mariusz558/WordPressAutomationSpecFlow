@@ -9,16 +9,19 @@ namespace WordpressAutomationSpecFlow.Pages
 {
    public class LoginPage
     {
-        public static bool IsAt
-        {
-            get
-            {
-                var title = "Learning Automation Framework Pluralsight › Log In";
-                if (title.Equals(WebBrowser.CurrentChromeWindow.Title))
-                    return true;
-                return false;
-            }
-        }
+       public static bool IsAt
+       {
+           get
+           {
+               var title = "Learning Automation Framework Pluralsight › Log In";
+               if (title.Equals(WebBrowser.CurrentChromeWindow.Title))
+               {
+                   return true;
+               }
+
+               return false;
+           }
+       }
         
        public static void PressLogInButton()
        {
@@ -44,6 +47,5 @@ namespace WordpressAutomationSpecFlow.Pages
        {
            WebBrowser.CurrentChromeWindow.FindElementById("user_pass").SendKeys("invalidpassword");
        }
-
     }
 }

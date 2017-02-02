@@ -96,9 +96,10 @@ namespace WordpressAutomationSpecFlow
         public void ThenIShouldBeAbleToSeeMyDashboardPage()
         {
             ////var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
+            //var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
             ////chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
-            Assert.AreEqual(titleDashboard, WebBrowser.CurrentChromeWindow.Title);
+
+            Assert.IsTrue(DashboardPage.IsAt, "Not on the dashboard page");
         }
         
         [Then(@"I should be able to see an error message '(.*)'")]

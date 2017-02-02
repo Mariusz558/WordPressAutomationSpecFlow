@@ -16,6 +16,7 @@ namespace WordpressAutomationSpecFlow
         public static void BeforeScenario()
         {
             WebBrowser.CurrentChromeWindow.Navigate().GoToUrl("http://localhost:15662/wp-login.php");
+            WebBrowser.CurrentChromeWindow.Manage().Window.Maximize();
         }
 
         [AfterScenario]

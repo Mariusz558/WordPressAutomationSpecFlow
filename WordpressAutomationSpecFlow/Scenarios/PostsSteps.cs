@@ -9,6 +9,7 @@ using OpenQA.Selenium.Support.UI;
 using System.Threading;
 using System.Collections.Generic;
 using OpenQA.Selenium.Interactions;
+using WordpressAutomationSpecFlow.Pages;
 
 namespace WordpressAutomationSpecFlow
 {
@@ -85,9 +86,11 @@ namespace WordpressAutomationSpecFlow
             //bool postsListNotEmpty = Assert.IsNotEmpty(postsList);
 
             //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            WebBrowser.CurrentChromeWindow.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
-            IList<IWebElement> postsList = (WebBrowser.CurrentChromeWindow.FindElements(By.ClassName("row-title")));
-            Assert.IsNotEmpty(postsList, "Post does not exist. Fuck you!");
+           // WebBrowser.CurrentChromeWindow.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click();
+            //IList<IWebElement> postsList = (WebBrowser.CurrentChromeWindow.FindElements(By.ClassName("row-title")));
+
+            Assert.IsTrue(AllPostsPage.PostExists, "Post does not exist. Fuck you!");
+
             /*if(postsList.Count>0){//jesli jest kilka postow petla for each
                 //var postToTrash = firefox.FindElements(By.TagName("row-title"))[0];
                 IList<IWebElement> checkBoxes = chrome.FindElements(By.Name("post[]"));
@@ -105,10 +108,10 @@ namespace WordpressAutomationSpecFlow
         public void GivenIAmOnTheDashboardPage()
         {
             //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
-            WebBrowser.CurrentChromeWindow.Manage().Window.Maximize();
-            var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
+            //WebBrowser.CurrentChromeWindow.Manage().Window.Maximize();
+            //var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
             //chrome.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
-            Assert.AreEqual(titleDashboard, WebBrowser.CurrentChromeWindow.Title);
+            Assert.IsTrue(DashboardPage.IsAt, "Not on the dashboard page");
         }
 
         [Given(@"There is at least one post created")]
@@ -131,10 +134,10 @@ namespace WordpressAutomationSpecFlow
             //var chrome = ScenarioContext.Current["browser"] as ChromeDriver;
             //chrome.FindElementByXPath(".//*[@id='menu-posts']/ul/li[2]/a").Click(); nie dziala
 
-            var title = "Posts ‹ Learning Automation Framework Pluralsight — WordPress";
-            WebBrowser.CurrentChromeWindow.FindElementByLinkText("Posts").Click();
+            //var title = "Posts ‹ Learning Automation Framework Pluralsight — WordPress";
+            //WebBrowser.CurrentChromeWindow.FindElementByLinkText("Posts").Click();
 
-            Assert.AreEqual(title, WebBrowser.CurrentChromeWindow.Title);
+            Assert.IsTrue(AllPostsPage.IsAt, "Not on the all post page");
         }
 
         [Then(@"I should be able to delete selected post")]

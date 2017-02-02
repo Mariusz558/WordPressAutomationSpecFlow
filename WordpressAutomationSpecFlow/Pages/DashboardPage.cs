@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace WordpressAutomationSpecFlow.Pages
 {
-    class DashboardPage
+    public class DashboardPage
     {
+        public static bool IsAt
+        {
+            get
+            {
+                var titleDashboard = "Dashboard ‹ Learning Automation Framework Pluralsight — WordPress";
+                if(titleDashboard.Equals(WebBrowser.CurrentChromeWindow.Title))
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }
