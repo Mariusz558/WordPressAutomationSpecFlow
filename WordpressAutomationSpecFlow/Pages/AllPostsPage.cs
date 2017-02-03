@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace WordpressAutomationSpecFlow.Pages
 {
@@ -36,6 +37,22 @@ namespace WordpressAutomationSpecFlow.Pages
                 }
                 return false;
             }
+        }
+
+        public static void DeletePost()
+        {
+            IList<IWebElement> checkBoxes = WebBrowser.CurrentChromeWindow.FindElements(By.Name("post[]"));
+            for (int i = 0; i < checkBoxes.Count; i++)
+            {
+                var postToTrash = checkBoxes[i];
+                postToTrash.Click();
+            }
+
+            var actionsMenu = WebBrowser.CurrentChromeWindow.FindElement(By.Id("bulk-action-selector-top"));
+            var selectElement = new SelectElement(actionsMenu);
+            selectElement.SelectByText("Move to Trash");
+            var applyButton = WebBrowser.CurrentChromeWindow.FindElement(By.Id("doaction"));
+            applyButton.Click();
         }
     }
 }
