@@ -14,5 +14,10 @@ namespace WordpressAutomationSpecFlow.Pages
         {
             WebBrowser.CurrentChromeWindow.FindElementByLinkText("Posts").Click();
         }
+
+        public static void ClickAddNew()
+        {
+            WebBrowser.CurrentChromeWindow.FindElementByLinkText("Add New").Click();
+        }
     }
 }

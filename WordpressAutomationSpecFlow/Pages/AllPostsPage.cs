@@ -8,8 +8,14 @@ using OpenQA.Selenium.Support.UI;
 
 namespace WordpressAutomationSpecFlow.Pages
 {
+    /// <summary>
+    /// The AllPostsPage class
+    /// </summary>    
     class AllPostsPage
     {
+        /// <summary>
+        /// Gets the PostExists property
+        /// </summary>        
         public static bool PostExists
         {
             get
@@ -20,6 +26,7 @@ namespace WordpressAutomationSpecFlow.Pages
                 {
                     return true;
                 }
+
                 return false;
             }
         }

@@ -19,8 +19,9 @@ namespace WordpressAutomationSpecFlow.Pages
                 //WebBrowser.CurrentChromeWindow.FindElementByLinkText("Posts").Click();
 
                 LeftMenuBar.ClickOnPosts();
+                LeftMenuBar.ClickAddNew();
 
-                WebBrowser.CurrentChromeWindow.FindElementByLinkText("Add New").Click(); //refactor: find
+                ////WebBrowser.CurrentChromeWindow.FindElementByLinkText("Add New").Click(); //refactor: find
 
                 if(title.Equals(WebBrowser.CurrentChromeWindow.Title))
                 {
