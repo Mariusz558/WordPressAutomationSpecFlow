@@ -75,8 +75,6 @@
     </Compile>
     <Compile Include="Pages\AllPostsPage.cs" />
     <Compile Include="Pages\DashboardPage.cs" />
-    <Compile Include="Pages\JenkinsPipelineTest.cs" />
-    <Compile Include="Pages\JenkinsTestClass.cs" />
     <Compile Include="Pages\LeftMenuBar.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\NewPostPage.cs" />
